@@ -1,13 +1,18 @@
 module.exports = function check(str, bracketsConfig) {
-    const open = []; //выделим открывающие скобки
-    const close = []; //выделим закрывающие скобки
+    const open = []; //виды открывающих скобок
+    const close = []; //виды закрывающих скобок
     for (let i=0; i<bracketsConfig.length; i++) { //выделяем откр/закр скобки
     open.push(bracketsConfig[i][0]);
     close.push(bracketsConfig[i][1]);
    };  
-
-   const str1 = str.split('');
-   let stek = [],
+   const str1 = str.split(''); //"разобрали" строку 
+   for (let i = 0; i < open.length; i++) { //переименуем одинаковые скобки 
+    if (open [ i ] == close [ i ]){
+     open [i] = i + "op";
+     close [i] = i + "cl";
+    };  
+ };
+      let stek = [],
        closeIndex = 0,
        openIndex = 0;
 
